@@ -1,26 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-public class Usuario {
-    String Perfil;
-    String Senha;
-    
-    List<Usuario> BancoDeDadosUsuarios = new ArrayList<>();
-    
-    public Usuario(String Perfil, String Senha){
-    this.Perfil = Perfil;
-    this.Senha = Senha;
-            }
-    
-    public String getPerfil() { return this.Perfil; }
-    public String getSenha() { return this.Senha; }
+package com.exemplo;
 
-    
-       public void logIn(){
-        if (BancoDeDadosUsuarios.stream().anyMatch(u -> u.Perfil.equals(this.Perfil))) {
-            System.out.println("ERRO: Usuário já cadastrado com este nome!");
-        } else {
-            System.out.println("Perfil Criado com sucesso.");
-        }
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Usuario {
+
+    @Id
+    private String perfil;
+    private String senha;
+
+    public Usuario() {}
+
+    public Usuario(String perfil, String senha) {
+        this.perfil = perfil;
+        this.senha = senha;
     }
+    public void setPerfil(String perfil) { this.perfil = perfil; }
+    public void setSenha(String senha) { this.senha = senha; }
+
+    public String getPerfil() { return perfil; }
+    public String getSenha() { return senha; }
 }
